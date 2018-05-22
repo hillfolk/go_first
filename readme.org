@@ -55,4 +55,12 @@ export GOROOT=$HOME/go
   }
 #+END_EXAMPLE
 
-* Go String
+* Go String & Data Struct
+
+** String
+   []byte 와 string 은 거의 동일하지만 string의 경우 읽기 전용
+
+** 문자열 연결
+   
+   
+
