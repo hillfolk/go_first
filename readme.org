@@ -61,6 +61,18 @@ export GOROOT=$HOME/go
    []byte 와 string 은 거의 동일하지만 string의 경우 읽기 전용
 
 ** 문자열 연결
-   
-   
 
+#+NAME: String Format
+
+#+BEGIN_SRC
+s := 'abc'
+ps := &s
+s += "def" //문자열 연결 
+
+s = fmt.Sprint(s,"def") // 문자열이 아닌 변수와도 연결하여 문자열 생성
+s = fmt.Sprintf("%sdef",s)  
+s = strings.Join([]string{s,"def"},"") // 구분자를 이어 붙일때 좋음 (포멧 데이터 생성)
+fmt.Println(s)
+fmt.Println(*ps)
+
+#+END_SRC
