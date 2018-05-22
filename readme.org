@@ -33,7 +33,7 @@ C:\Go
 
 *** Custome Path Setting
 #+BEGIN_EXAMPLE
-export = GOROOT=$HOME/go
+export GOROOT=$HOME/go
 #+END_EXAMPLE
 
 *** Check Setting
@@ -42,6 +42,7 @@ export = GOROOT=$HOME/go
 #+END_EXAMPLE
 
 * Go Test
+
 *** Test File
 #+BEGIN_EXAMPLE
   [FileName]_test.go
