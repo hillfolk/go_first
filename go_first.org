@@ -4,4 +4,32 @@
 #+STARTUP: showeverything
 #+TITLE: GO First
 
+* Go 설치하기
+** Ubuntu/Debian Install
+   <pre>
+   sudo apt-get install golang
+   </pre>
 
+** CentOS/Redhat
+   <pre>
+   sudo yum install golang
+   </pre>
+
+** Window
+  Install File Downloads: https://golang.org/dl/ 
+
+** GO ROOT Setup
+*** Default Setting
+- Linux Path
+   ''' /usr/local/go '''
+
+- Windows Path 
+   ''' C:\Go '''
+
+- Custome Path Setting
+  ''' export = GOROOT=$HOME/go '''
+
+- Check Setting
+
+  
+  ''' go env '''
