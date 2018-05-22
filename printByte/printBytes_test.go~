@@ -1,0 +1,7 @@
+package printBytes
+
+import "fmt"
+
+func Example_printBytes(){
+	s := "가나다"
+}

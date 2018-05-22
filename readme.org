@@ -45,3 +45,5 @@
   Example[functionName](){
   }
 </pre>
+
+* Go String
