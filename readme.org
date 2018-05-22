@@ -102,7 +102,23 @@ fmt.Println(*ps)
 배열보다는 유연한 구조의 슬라이스의 사용해도 된다. 
 배열은 길이가 변할수 없고 슬라이스는 길이가 변할수 있는 배열이라고 할수 있다. 
 
+*** 선언 
 #+BEGIN_SRC
-var [3]string 
+// Array
+fruits := [3]string{"사과","바나나","토마토"}
 
+// Slice 
+var fruits []string
+fruits := make([]string, n)
+
+#+END_SRC
+
+*** Slicing
+
+#+BEGIN_SRC
+	nums := []int{1, 2, 3, 4, 5}
+	fmt.Println(nums)
+	fmt.Println(nums[0:3])
+	fmt.Println(nums[1:])
+	fmt.Println(nums[:3])
 #+END_SRC
