@@ -19,41 +19,39 @@
   Install File Downloads: https://golang.org/dl/ 
 
 ** GO ROOT Setup
-*** Default Setting
+** Default Setting
 
-#+NAME: Linux Path
+*** Linux Path
 #+BEGIN_EXAMPLE
 /usr/local/go 
 #+END_EXAMPLE
 
-#+NAME: Windows Path 
+*** Windows Path 
 #+BEGIN_EXAMPLE
 C:\Go
 #+END_EXAMPLE
 
-#+NAME:Custome Path Setting
+*** Custome Path Setting
 #+BEGIN_EXAMPLE
 export = GOROOT=$HOME/go
 #+END_EXAMPLE
 
-#+NAME: Check Setting
+*** Check Setting
 #+BEGIN_EXAMPLE
   go env
 #+END_EXAMPLE
 
-* Go Test 
-#+NAME: Test File
+* Go Test
+*** Test File
 #+BEGIN_EXAMPLE
   [FileName]_test.go
 #+END_EXAMPLE
 
-#+NAME: Test Func
-
+*** Test Func
 #+BEGIN_EXAMPLE
 
   Example[functionName](){
   }
 #+END_EXAMPLE
-
 
 * Go String
