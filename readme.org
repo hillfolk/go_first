@@ -59,11 +59,11 @@ export GOROOT=$HOME/go
 
 ** String
    []byte 와 string 은 거의 동일하지만 string의 경우 읽기 전용
+   []byte 를 사용할 경우 통신 프로그램에서 처리 하기 좋을것 같다. 
 
 ** 문자열 연결
 
 #+NAME: String Format
-
 #+BEGIN_SRC
 s := 'abc'
 ps := &s
@@ -71,8 +71,35 @@ s += "def" //문자열 연결
 
 s = fmt.Sprint(s,"def") // 문자열이 아닌 변수와도 연결하여 문자열 생성
 s = fmt.Sprintf("%sdef",s)  
-s = strings.Join([]string{s,"def"},"") // 구분자를 이어 붙일때 좋음 (포멧 데이터 생성)
+s = strings.Join([]string{s,"def"},"") // 구분자를 연결할 경우 좋은 방법 (포멧 데이터 생성)
 fmt.Println(s)
 fmt.Println(*ps)
+#+END_SRC
+
+** String to Number
+문자열을 숫자로 변경하거나 숫자를 문자열로 변환 하는 방법
+
+#+NAME:StrToInt
+#+BEGIN_SRC
+
+	var i int
+	var k int64
+	var f float64
+	var s string
+	var err error
+
+	i, err = strconv.Atoi("350")                  // i == 350
+	k, err = strconv.ParseInt("cc7fdd", 16, 32) // k == 13402077
+	k, err = strconv.ParseInt("0xcc7fdd", 0, 32)  // k == 13402077
+	f, err = strconv.ParseFloat("3.14", 64)    // f == 3.14
+	s = strconv.Itoa(340)                     // s == "340"
+	s = strconv.FormatInt(13402077, 16)      // s == "cc7fdd"
 
 #+END_SRC
+
+** Array and Slice
+
+
+
+
+
