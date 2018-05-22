@@ -79,7 +79,8 @@ fmt.Println(*ps)
 ** String to Number
 문자열을 숫자로 변경하거나 숫자를 문자열로 변환 하는 방법
 
-#+NAME:StrToInt
+#+NAME: StrToInt
+
 #+BEGIN_SRC
 
 	var i int
@@ -98,8 +99,10 @@ fmt.Println(*ps)
 #+END_SRC
 
 ** Array and Slice
+배열보다는 유연한 구조의 슬라이스의 사용해도 된다. 
+배열은 길이가 변할수 없고 슬라이스는 길이가 변할수 있는 배열이라고 할수 있다. 
 
+#+BEGIN_SRC
+var [3]string 
 
-
-
-
+#+END_SRC
