@@ -20,30 +20,40 @@
 
 ** GO ROOT Setup
 *** Default Setting
-- Linux Path
-   ''' /usr/local/go '''
 
-- Windows Path 
-   ''' C:\Go '''
+#+NAME: Linux Path
+#+BEGIN_EXAMPLE
+/usr/local/go 
+#+END_EXAMPLE
 
-- Custome Path Setting
-  ''' export = GOROOT=$HOME/go '''
+#+NAME: Windows Path 
+#+BEGIN_EXAMPLE
+C:\Go
+#+END_EXAMPLE
 
-- Check Setting
+#+NAME:Custome Path Setting
+#+BEGIN_EXAMPLE
+export = GOROOT=$HOME/go
+#+END_EXAMPLE
 
-  
-  ''' go env '''
-
+#+NAME: Check Setting
+#+BEGIN_EXAMPLE
+  go env
+#+END_EXAMPLE
 
 * Go Test 
-  Test File 
-  <pre>
+#+NAME: Test File
+#+BEGIN_EXAMPLE
   [FileName]_test.go
-  </pre>
-  Test Function 
-  <per>
+#+END_EXAMPLE
+
+#+NAME: Test Func
+
+#+BEGIN_EXAMPLE
+
   Example[functionName](){
   }
-</pre>
+#+END_EXAMPLE
+
 
 * Go String
