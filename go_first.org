@@ -33,3 +33,15 @@
 
   
   ''' go env '''
+
+
+* Go Test 
+  Test File 
+  <pre>
+  [FileName]_test.go
+  </pre>
+  Test Function 
+  <per>
+  Example[functionName](){
+  }
+</pre>

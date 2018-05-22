@@ -1,0 +1,9 @@
+package hangul
+
+import "fmt"
+
+func ExmpleHasConsonantSuffix{
+	fmt.Println(HasConsonantSuffix("Go 언어"))
+	fmt.Println(HasConsonantSuffix("그럼"))
+	fmt.Println(HasConsonantSuffix("우리 밥 먹고 합시다."))
+	

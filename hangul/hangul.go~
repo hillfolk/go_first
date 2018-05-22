@@ -1,0 +1,7 @@
+
+package hangul
+
+var (
+	start = rune(44032)
+	end = rune(55204)
+)
