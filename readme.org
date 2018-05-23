@@ -11,14 +11,14 @@ https://ridibooks.com/v2/Detail?id=443000367&_s=search&_q=go
 * Go 설치하기
 
 ** Ubuntu/Debian Install
-   <pre>
+   #+BEGIN_EXAMPLE
    sudo apt-get install golang
-   </pre>
+   #+END_EXAMPLE
 
 ** CentOS/Redhat
-   <pre>
+   #+BEGIN_EXAMPLE
    sudo yum install golang
-   </pre>
+   #+END_EXAMPLE
 
 ** Window
   Install File Downloads: https://golang.org/dl/ 
