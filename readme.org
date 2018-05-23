@@ -133,10 +133,10 @@ fruits := make([]string, n)
 Copy 문법은 값의 개수가 적은 쪽에 맞추서 복사 하게 됩니다. 
 그부분 때문에 아래와 같은 코드를 사용해야 하는 경우가 있습니다.
 
-#+BEIGN_SRC
+#+BEGIN_SRC
     src := []int(30,20,50,10,40)
     dest := make([]int, len(src))
-    copy(dest, src)
+    copy(dest, sr)c
 #+END_SRC
 
 
