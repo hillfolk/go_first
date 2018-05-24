@@ -1,0 +1,17 @@
+package "map"
+
+import ("fmt"
+	"reflect")
+
+func count(s string, codeCount map[rune]int){
+	for_,r := range s {
+		codeCount[r]++
+	}
+}
+
+func TestCount(t *testing.T){ sjfgal    sdf           asdasd
+	codeCount := map[rune]int{}
+	count("s")   
+		
+}
+
