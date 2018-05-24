@@ -162,6 +162,23 @@ for _, v := range m {
 #+END_SRC
 
 *** Set
+Go 에서는 직접 Set 자료구조를 제공하지 않고 Map 을 사용하여 구현 할수 있다. 
+
+#+BEGIN_SRC
+// map 을 set 처럼사용하기 
+func hasDupeRune(s string) bool {
+	runeSet := map[rune]struct{}{}
+	
+	for _, r := range s {
+		if _, exists := runeSet[r]; exists{
+			return true
+		}
+	runeSet[r] = struct{}{}
+	}
+	return false
+}
+
+#+END_SRC
 
 
 
