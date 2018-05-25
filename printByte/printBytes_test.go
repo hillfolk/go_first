@@ -3,9 +3,9 @@ package printBytes
 import "fmt"
 
 func Example_PrintBytes() {
-	s := "가나다"
+	s := "가나다사랑한는ㄱ"
 	for i := 0;i < len(s); i++ {
-		fmt.Printf("%x:",s[i])
+		fmt.Printf("%d ",s[i])
 	}
 	
 	fmt.Println()

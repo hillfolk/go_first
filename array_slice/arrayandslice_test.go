@@ -7,11 +7,28 @@ func Example_array() {
 	for _, fruit := range fruits {
 		fmt.Printf("%s는 맛있다.\n", fruit)	
 	}
-	// Output:
+	// Output
 	// 사과는 맛있다.
 	// 바나나는 맛있다.
 	// 토마토는 맛있다.
+	
 }
+
+
+func Example_char() {
+	abc := [...]string{"사","삭","산","삳","가","각","간","갇"}
+	for _, c := range abc {
+		fmt.Println(c[0],c[1],c[2])
+
+		fmt.Println(c)
+	}
+	// Output:
+	// 
+	// 
+	// 
+}
+
+
 
 func Example_slice() {
 
@@ -23,7 +40,7 @@ func Example_slice() {
 	for _, fruit := range fruits {
 		fmt.Printf("%s는 맛있다.\n", fruit)	
 	}
-	// Output:
+	// Output
 	// 사과는 맛있다.
 	// 바나나는 맛있다.
 	// 토마토는 맛있다.
@@ -36,7 +53,7 @@ func Example_sling() {
 	fmt.Println(nums[0:3])
 	fmt.Println(nums[1:])
 	fmt.Println(nums[:3])
-	//Output:
+	//Output
 	//.
 }
 

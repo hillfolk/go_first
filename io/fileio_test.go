@@ -1,7 +1,9 @@
 package io
 
 import ("fmt"
-	"os")
+	"os"
+	"io"
+)
 
 func fileread(filename string)error {
 	f, err := os.Create(filename)
@@ -18,4 +20,28 @@ func fileread(filename string)error {
 	return nil
 }
 
+func WriteTo(w io.Writer, lines []string) error {
+	for _,line := range lines{
+		if _,err := fmt.Fprintln(w, line); err != nil {
+			return err
+		}
+	}
+	return nil
+}
 
+
+func ExampleWriteTo(){
+	lines := []string{
+		"bill@mail.com",
+		"tom@mail.com",
+		"jane@mail.com",
+	}
+	if err := WriteTo(os.Stdout, lines); err != nil{
+		fmt.Println(err)
+	}
+	// Output:
+	// bill@mail.com
+	// tom@mail.com
+	//jane@mail.com
+	
+}
