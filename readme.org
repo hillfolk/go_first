@@ -181,6 +181,40 @@ func hasDupeRune(s string) bool {
 #+END_SRC
 
 
+*** 파일 입출력
+
+#+BEGIN_SRC
+
+
+f, err := os.Open(filename)
+if err != nil {
+    return err
+}
+
+defer f.Close()
+var num int
+
+if _, err := fmt.Fscanf(f,"%d\n",&num); err == nil {
+//  파일 데이터 처리 
+}
+
+//==========================================
+	f, err := os.Create(filename)
+	if err != nil {
+		return err // 에러 처리 
+	}
+	defer f.Close()
+	var num int
+
+	if _, err := fmt.Fscanf(f,"%d\n",&num); err == nil {
+		return err
+	//  파일 데이터 처리 
+	}
+
+#+END_SRC
+
+
+
 
 
 
