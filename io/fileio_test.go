@@ -3,19 +3,17 @@ package io
 import ("fmt"
 	"os"
 	"io"
+	"strings"
+	"bufio"
 )
 
-func fileread(filename string)error {
-	f, err := os.Create(filename)
-	if err != nil {
-		return err // 에러 처리 
+func ReadFrom(r io.Reader, lines *[]string) error {
+	scanner := bufio.NewScanner(r)
+	for scanner.Scan(){
+		*lines = append(*lines, scanner.Text())
 	}
-	defer f.Close()
-	var num int
-
-	if _, err := fmt.Fscanf(f,"%d\n",&num); err == nil {
+	if err := scanner.Err(); err != nil {
 		return err
-	//  파일 데이터 처리 
 	}
 	return nil
 }
@@ -44,4 +42,15 @@ func ExampleWriteTo(){
 	// tom@mail.com
 	//jane@mail.com
 	
+}
+
+func ExampleReadFrom() {
+	r := strings.NewReader("bill\ntom\njane\n")
+	var lines []string
+	if err := ReadFrom(r, &lines); err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(lines)
+	//Output:
+	//[bill tom jane]
 }
