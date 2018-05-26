@@ -1,6 +1,10 @@
 package graph
 
-import "fmt"
+import ("fmt"
+	"testing"
+	"io"
+	"strings"
+	"bytes")
 
 func WriteTo(w io.Writer, adjList [][]int) error {
 	size := len(adjList)
@@ -28,7 +32,7 @@ func WriteTo(w io.Writer, adjList [][]int) error {
 
 func ReadFrom(r io.Reader, adjList *[][]int) error {
 	var size int
-	if _err := fmt.Fscanf(r, "%d", &size); err != nil {
+	if _,err := fmt.Fscanf(r, "%d", &size); err != nil {
 		return err
 	}
 	*adjList = make([][]int, size)
@@ -48,4 +52,40 @@ func ReadFrom(r io.Reader, adjList *[][]int) error {
 		return err
 	}
 	return nil
-			
+}
+
+
+func TestWriteTo(t *testing.T) {
+	adjList := [][]int{
+		{3, 4},
+		{0, 2},
+		{3},
+		{2,4},
+		{0},
+	}
+	w := bytes.NewBuffer(nil)
+	
+	if err := WriteTo(w, adjList); err != nil {
+		t.Error(err)
+	}
+	expected := "5\n2 3 4\n2 0 2\n1 3\n2 4\n1 0\n"
+	if expected != w.String() {
+	
+		t.Logf("expected: %s \n",expected)
+		t.Errorf("found: %s\n", w.String())
+	}
+}
+
+func ExampleReadFrom(){
+	r := strings.NewReader("5\n2 3 4\n2 0 2\n1 3\n2 4\n1 0\n")
+	var adjList [][]int
+	if err := ReadFrom(r,&adjList); err != nil {
+		fmt.Println(err)
+		
+	}
+
+	fmt.Println(adjList)
+	// Output:
+	//.xs
+}
+
