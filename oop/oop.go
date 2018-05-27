@@ -9,12 +9,22 @@ type Item struct {
 	quantity int
 }
 
+type Box struct {
+	count int
+	Initem Item
+}
+
 func (t Item) Cost() float64 {
 	return t.price * float64(t.quantity)
 }
 
+func (t Box) Cost() float64 {
+	return float64(t.count * 1000)
+}
+
 func main(){
 	shirt := Item{name:"Men's Slim-Fit Shirt", price: 25000, quantity:3}
-
-	fmt.Println(shirt.Cost())
+	shirtbox := Box{count:5,Initem:shirt}
+	fmt.Println(shirtbox.Cost())
+	fmt.Println(shirtbox.Initem.Cost())
 }
