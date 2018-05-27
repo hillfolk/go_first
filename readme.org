@@ -4,9 +4,17 @@
 #+STARTUP: showeverything
 #+TITLE: GO First
 
-이 내용은 주로 디스커버리 Go의 내용입니다. 레디북에 있으니 참고 하세요.
+이 내용은 주로 Go 언어 웹 프로그래밍 철저 입문 과  디스커버리 Go의 내용입니다. 레디북에 있으니 참고 하세요.
+개인적으로 아래 첫번째 책을 더 추천 합니다. 
 
+Go 언어 웹 프로그래밍 철저 입문(추천)
+https://ridibooks.com/v2/Detail?id=754018613&_s=search&_q=go
+
+디스커버리 Go 
 https://ridibooks.com/v2/Detail?id=443000367&_s=search&_q=go
+
+
+
 
 * Go 설치하기
 
