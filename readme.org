@@ -451,3 +451,19 @@ func display(s interface { show()}) {
 }
 
 #+END_SRC
+
+
+*** Go 인터페이스를 이용한 구조
+Go는 인터페이스의 특징 덕에 모듈 간 연계가 매우 쉽다. 먼저 전체 플로우를 제어하는 미들웨어를 만들고, 인터페이스 기반으로 전체 플로우를 제어하여 라이브러리나 패키지를 담을수 있는 형태로 미들웨어를 만드는 것은 Go의 일반적인 패턴
+
+*** 인터페이스 임베딩
+인터페이스도 다른 인터페이스를 임베딩 할수 있다 
+
+#+BEGIN_SRC
+
+type Itemer interface {
+   Coster
+   fmt.Stringer
+}
+
+#+END_SRC
