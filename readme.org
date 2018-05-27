@@ -434,3 +434,20 @@ for i := 0; i < len(values); i++ {
 }
 
 #+END_SRC
+
+
+*** 인터페이스 
+인터페이스의 역할은 객체의 동작을 표현
+단순히 동작 방식만 표현
+
+
+*** 익명 인터페이스
+
+
+#+BEGIN_SRC
+
+func display(s interface { show()}) {
+ s.show()
+}
+
+#+END_SRC
