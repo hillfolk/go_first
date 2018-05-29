@@ -472,3 +472,65 @@ type Itemer interface {
 고루틴은 GO 프로그램 안에서 동시에 독립적으로 실해오디는 흐름의 단위 
 고루틴은 정보를 공유하는 방식이 아니라 서로 메시지를 주고 받는 방식으로 동작
 
+*** Go Race Detector
+ 
+#+BEGIN_SRC
+
+go test -race mypkg
+
+go run -race mysrc.go
+
+go build -race mypkg
+
+go install -race mypkg
+
+#+END_SRC
+
+
+*** 체널 사용시 주의점
+
+Go 에서 문자열과 배열은 변하지 않으므로 체널에 값을 이용해도 안전하다. 하지만 포인터 변수나 참조값(슬라이스,맵)을 채널로 전달할 때는 주소값을 전달되므로 값을 보내는 고루틴과 값을 받는 고루틴을 값을 동시에 수정할 경 예상치 못한 결과 발생
+포인터나 참조 값을 전달할 경우 여러 고루틴에서 값을 동시에 수정 할수 없도록 뮤텍스를 통해서 접근을 제한해야한다. 
+참조 값을 변경할 위험이 있는 고루틴에는 참조 값을 직접 전달하는 것이 아니라 인터페이스를 전달하는 것도 좋은 방법이다. 인터페이스를 전달하는 것도 좋은 방법이다. 참조 값에 대한 읽기 전용 인터페이스를 만들고 체널로 읽기 전용 인터페이스를 전달하면 안전하게 참조 
+
+#+BEGIN_SRC
+
+type mapGetter interface {
+    Get(s string)interface{}
+}
+
+type stringMap map[string] interface{}
+
+func (m stringMap) Get(s string) interface{} {return m[s]}
+// stringMap을 직접 전달하지 않고 mapGetter 인터페이스를 체널로 전달 
+
+ func process (g <-chan mapGetter) {
+ ...
+ map := <-g
+
+ value := map.Get("key")
+
+
+}
+
+
+#+END_SRC
+
+
+*** 체널
+채널은 기본적으로 양방향 통신이 가능한 상태로 만들어짐
+채널을 단방향으로 사용할때는 반드시 방향을 지정해 주는 것이 좋다. 
+#+BEGIN_SRC
+chan<- string // 송신 전용 채널
+<-chan string // 수신 전용 채널
+#+END_SRC
+
+*** 버퍼드 채널 
+채널은 지정한 크기의 버퍼를 가질수 잇다. 채널을 생성할때 버퍼의 크기를 make의 두 번째 매개변수로 전달하면 버퍼드 채널을 만들수 있다.
+
+ ch := make(chan int, 100)
+
+버퍼드 채널은 비동기 방식으로 동작한다. 채널이 꽉찰때까지 채널로 메시지를 계속 전송할 수 있고 채널이 빌때 까지 체널로부터 메시지를 계속 수신해 올 수 있다.
+
+
+
