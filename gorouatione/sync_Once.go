@@ -8,7 +8,7 @@ import (
 
 const initialValue = -500
 
-type conunter struct {
+type counter struct {
 	i int64
 	mu sync.Mutex
 	once sync.Once
@@ -16,7 +16,7 @@ type conunter struct {
 
 func (c *counter) increment() {
 
-	c.once.Do(funct() {
+	c.once.Do(func() {
 		c.i = initialValue
 	})
 
@@ -35,7 +35,7 @@ func main() {
 	c := counter{i:0}
 	done := make(chan struct{})
 
-	for i := 0 i < 1000 i++ {
+	for i := 0; i < 1000; i++ {
 		go func() {
 			c.increment()
 			done <- struct{}{} //done 채널에 완료 신호 전송
