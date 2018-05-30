@@ -11,12 +11,11 @@ import (
 func main() {
 	quit := make(chan struct{})
 	done := process(quit)
-	timeout := time.After(1 * time.Second)
-
+	timeout := time.After(3 * time.Second)
 	select {
 	case d := <- done:
 		fmt.Println(d)
-	case <-timeout:
+	case <-timeout: //일정 시간후 체널 데이터 발생 
 		fmt.Println("Time out!")
 		quit <- struct{}{}
 	}
@@ -28,11 +27,16 @@ func process(quit <-chan struct{}) chan string {
 
 	go func() {
 		go func() {
+			fmt.Println("Start")
+			c := time.Tick(1 * time.Second)
+			for now := range c {
+				fmt.Printf("%v \n", now)
+			}
 			time.Sleep(10 * time.Second)
-		
-		
-		done <- "Complete!"
-	}()
+			fmt.Println("End")
+			done <- "Complete!"
+			
+		}()
 	<- quit
 	return
 }()
