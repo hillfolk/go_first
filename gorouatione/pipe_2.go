@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	JOB_COUNT = 100000
+	JOB_COUNT = 10000000
 	BUF_SIZE = 5
 )
 
