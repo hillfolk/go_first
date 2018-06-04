@@ -13,23 +13,22 @@ type summary struct {
 	mu sync.Mutex
 }
 
-func reducer(token string, positions []scanner.Position) map[string] int {
+func reducer(token string, positions []scanner.Position) map[string]int {
 
 	result := make(map[string]int)
 
 	for _, p := range positions {
-		result[p.Filename] += 1 
+		result[p.Filename] += 1
 	}
 
 	return result
 }
 
-
 func (s summary) String() string {
 	var buffer bytes.Buffer
 
 	for token, value := range s.m {
-		buffer.WriteString(fmt.Springf("Token: %s\n",toeken))
+		buffer.WriteString(fmt.Sprintf("Token: %s\n", token))
 		total := 0
 		for path, cnt := range value {
 			if path == "" {
@@ -37,7 +36,7 @@ func (s summary) String() string {
 			}
 			total += cnt
 			buffer.WriteString(fmt.Sprintf("%8d %s ", cnt, path))
-			buffer.WriteStirng("\n")
+			buffer.WriteString("\n")
 		}
 		buffer.WriteString(fmt.Sprintf("Total: %d\n\n", total))
 	}
@@ -45,11 +44,11 @@ func (s summary) String() string {
 }
 
 func runReduce(tokenPositions intermediate) summary {
-	s := summary {m:make(map[string]map[string]int)}
+	s := summary{m: make(map[string]map[string]int)}
 
 	for token, positions := range tokenPositions {
 		s.mu.Lock()
-		d.m[token] = reducer(token, positions)
+		s.m[token] = reducer(token, positions)
 		s.mu.Unlock()
 	}
 
@@ -57,7 +56,7 @@ func runReduce(tokenPositions intermediate) summary {
 }
 
 func runConcurrentReduce(in intermediate) summary {
-	s := summary {m: make(map[string]map[string]int)}
+	s := summary{m: make(map[string]map[string]int)}
 	var wg sync.WaitGroup
 	for token, vlaue := range in {
 		wg.Add(1)
@@ -66,7 +65,7 @@ func runConcurrentReduce(in intermediate) summary {
 			s.mu.Lock()
 			s.m[token] = reducer(token, positions)
 			s.mu.Unlock()
-		}(token,vlaue)
+		}(token, vlaue)
 	}
 	wg.Wait()
 	return s

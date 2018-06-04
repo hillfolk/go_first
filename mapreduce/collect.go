@@ -2,11 +2,9 @@ package main
 
 import "text/scanner"
 
-
-
 type intermediate map[string][]scanner.Position
 
-func collect( in <-chan partial) intermediate {
+func collect(in <-chan partial) intermediate {
 	tokenPositions := make(intermediate, 10)
 	for t := range in {
 		tokenPositions.addPartial(t)
@@ -19,8 +17,8 @@ func (m intermediate) addPartial(p partial) {
 	positions, ok := m[p.token]
 
 	if !ok {
-		positions = make([]scanner.Position,1)
+		positions = make([]scanner.Position, 1)
 	}
 
-	m[p.token] = append(positions, p.Position)// key Value 추가
+	m[p.token] = append(positions, p.Position) // key Value 추가
 }

@@ -7,14 +7,12 @@ import (
 	"text/scanner"
 )
 
-
 type partial struct {
 	token string
 	scanner.Position
 }
 
-
-func mapper(path string , out chan<- partial) {
+func mapper(path string, out chan<- partial) {
 	file, err := os.Open(path)
 	if err != nil {
 		return
@@ -22,13 +20,13 @@ func mapper(path string , out chan<- partial) {
 
 	defer file.Close()
 
-	if info,err := file.Stat(); err != nil ||info.Model().IsDir() {
-		return 
+	if info, err := file.Stat(); err != nil || info.Mode().IsDir() {
+		return
 	}
 
 	var s scanner.Scanner
 
-	s.Filenname = path
+	s.Filename = path
 	s.Init(file)
 
 	tok := s.Scan()
@@ -37,22 +35,19 @@ func mapper(path string , out chan<- partial) {
 		tok = s.Scan()
 	}
 
-	
 }
 
-
-func runMap(paths <- chan string) <-chan partial {
+func runMap(paths <-chan string) <-chan partial {
 	out := make(chan partial, BUF_SIZE)
 	go func() {
 		for path := range paths {
-			mapper(path,out)
+			mapper(path, out)
 		}
 		close(out)
 	}()
 
 	return out
 }
-
 
 func runConcurrentMap(paths <-chan string) <-chan partial {
 	out := make(chan partial, BUF_SIZE)
@@ -63,10 +58,10 @@ func runConcurrentMap(paths <-chan string) <-chan partial {
 		go func() {
 			defer wg.Done()
 			for path := range paths {
-				mapper(path,out)
+				mapper(path, out)
 			}
 		}()
-		
+
 	}
 
 	go func() {
