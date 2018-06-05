@@ -18,21 +18,45 @@ https://ridibooks.com/v2/Detail?id=443000367&_s=search&_q=go
 
 * Go 설치하기
 
+
 ** Ubuntu/Debian Install
+*** Apt-get 을 이용한 설치
+    
    #+BEGIN_EXAMPLE
    sudo apt-get install golang
    #+END_EXAMPLE
 
-** CentOS/Redhat
+*** CentOS/Redhat 설치
+
    #+BEGIN_EXAMPLE
    sudo yum install golang
    #+END_EXAMPLE
+
+*** 메뉴얼 설치
+    + 다운로드
+
+    #+BEGIN_EXAMPLE
+    wget https://dl.google.com/go/go[version].linux-amd64.tar.gz
+    #+END_EXAMPLE
+    
+    + 압축풀기
+      
+     #+BEGIN_EXAMPLE
+     tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz
+     #+END_EXAMPLE
+
+    + 환경 변수 설정
+      $HOME/.profile  환경 변수 추가 또는 $HOME/.bashrc  환경 변수 추가 
+    #+BEGIN_EXAMPLE
+    export PATH=$PATH:/usr/local/go/bin 
+    export GOROOT=$HOME/go1.X
+    export PATH=$PATH:$GOROOT/bin
+    #+END_EXAMPLE
 
 ** Window
   Install File Downloads: https://golang.org/dl/ 
 
 ** GO ROOT Setup
-** Default Setting
 
 *** Linux Path
 #+BEGIN_EXAMPLE
@@ -45,9 +69,11 @@ C:\Go
 #+END_EXAMPLE
 
 *** Custome Path Setting
+    $HOME/.profile  환경 변수 추가 또는 $HOME/.bashrc  환경 변수 추가
 #+BEGIN_EXAMPLE
 export GOROOT=$HOME/go
 #+END_EXAMPLE
+
 
 *** Check Setting
 #+BEGIN_EXAMPLE
@@ -61,7 +87,8 @@ Go 에서는 특정 Maven 이나 Pip 처럼  레파지토리는 가지고 있지
 
 #+BEGIN_EXAMPLE
  go install buffer
- GOPATH/pkg/<os>
+
+ $GOPATH/pkg/<os>
 
 #+END_EXAMPLE
 
