@@ -1,0 +1,50 @@
+package main
+
+import (
+	"fmt"
+	"net"
+	"net/rpc"
+)
+
+type Calc int // RPC 서버에 등록하기 위해 임의의 타입으로 정의
+
+type Args struct {
+	A,B int
+}
+
+
+type Reply struct {
+	c int
+}
+
+
+func (c *Calc) Sum(args Args, reply *Reply) error {
+	reply.c = args.A + args.B
+	return nil
+}
+
+func main() {
+	rpc.Register(new(Calc))
+	
+	ln, err := net.Listen("tcp",":6000")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	defer ln.Close()
+
+	for {
+		conn, err := ln.Accept()
+		if err != nil {
+			continue
+		}
+
+
+		defer conn.Close()
+
+		go rpc.ServeConn(conn)
+	}
+		
+}
