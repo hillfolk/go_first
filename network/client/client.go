@@ -29,7 +29,7 @@ func main() {
 			}
 
 			fmt.Println(string(data[:n])) //데이터 출력
-			time.Sleep(1 * time.Millisecond)
+			time.Sleep(1 * time.Microsecond)
 			
 		}
 		
@@ -48,7 +48,7 @@ func main() {
 			}
 
 			i++
-			time.Sleep(1 * time.Millisecond)	
+			time.Sleep(1 * time.Microsecond)	
 		}
 	}(client)
 
