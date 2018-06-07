@@ -14,12 +14,12 @@ type Args struct {
 
 
 type Reply struct {
-	c int
+	C int
 }
 
 
 func (c *Calc) Sum(args Args, reply *Reply) error {
-	reply.c = args.A + args.B
+	reply.C = args.A + args.B
 	return nil
 }
 

@@ -10,7 +10,7 @@ type Args struct {
 }
 
 type Reply struct {
-	c int
+	C int
 }
 
 func main() {
@@ -31,7 +31,7 @@ func main() {
 		return
 	}
 
-	fmt.Println(reply.c)
+	fmt.Println(reply.C)
 
 	args.A = 4
 	args.B = 9
@@ -39,5 +39,5 @@ func main() {
 	sumCall := client.Go("Calc.Sum", args, reply, nil)
 
 	<-sumCall.Done
-	fmt.Println(reply.c)
+	fmt.Println(reply.C)
 }
